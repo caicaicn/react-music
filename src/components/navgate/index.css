@@ -1,0 +1,24 @@
+.navgate{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    color: #fff;
+    background-color: #e5473c;
+    font-size: .4rem;
+}
+.navgate span{
+    margin-left: .4rem;
+    vertical-align: middle;
+}
+.navgate button{
+    background-color: #e5473c;
+    color: #fff;
+    vertical-align: middle;
+    font-size: .5rem;
+    font-weight: 400;
+    margin-left: .5rem;
+}

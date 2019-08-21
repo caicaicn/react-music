@@ -1,0 +1,33 @@
+.mini-player{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+    width: 100%;
+    padding: .2rem;
+}
+.mini-player .header-img{
+    width: 1rem;
+    border-radius: 5px;
+    vertical-align: middle;
+}
+.mini-player p{
+    display: inline-block;
+    vertical-align: middle;
+}
+.mini-player p div{
+    font-size: .3rem;
+    margin-left: .5rem;
+}
+.mini-player p div.music-singer{
+    color: #888;
+}
+
+.mini-player .iconfont{
+    float: right;
+    font-size: .6rem;
+    margin-top: .16rem;
+    cursor: pointer;
+}
