@@ -3,14 +3,15 @@ import "./index.css";
 
 class Main extends Component {
     render(){
+        const { setIsFull, musicImg, play, isPlay } = this.props;
         return (
             <div className="mini-player">
-                <img className="header-img" src={this.props.musicImg.image} />
-                <p>
-                    <div>{this.props.musicImg.name}</div>
-                    <div className="music-singer">{this.props.musicImg.singer}</div>
-                </p>
-                <p onClick={this.props.play} className={`iconfont ${!this.props.isPlay ? 'icon-bofang' : "icon-zanting"}`}></p>
+                <img onClick={() => setIsFull(true)} className="header-img" src={musicImg.image} />
+                <div className="music-info">
+                    <div>{musicImg.name}</div>
+                    <div className="music-singer">{musicImg.singer}</div>
+                </div>
+                <p onClick={() => play()} className={`iconfont ${!isPlay ? 'icon-bofang' : "icon-zanting"}`}></p>
             </div>
         )
     }

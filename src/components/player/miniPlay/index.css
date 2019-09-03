@@ -13,15 +13,15 @@
     border-radius: 5px;
     vertical-align: middle;
 }
-.mini-player p{
+.mini-player .music-info{
     display: inline-block;
     vertical-align: middle;
 }
-.mini-player p div{
+.mini-player .music-info div{
     font-size: .3rem;
     margin-left: .5rem;
 }
-.mini-player p div.music-singer{
+.mini-player .music-info div.music-singer{
     color: #888;
 }
 
