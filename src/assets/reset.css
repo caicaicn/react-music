@@ -100,3 +100,7 @@ textarea {
 input[type="text"]:focus {
     outline: 0;
 }
+#root{
+    height: 100%;
+    overflow: scroll;
+}

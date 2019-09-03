@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./index.css";
 import { connect } from "react-redux";
-// import { dispatch } from "rxjs/internal/observable/pairs";
 import server from "../../server/index";
 import { createPlayListDetail } from '../../utils/playlist';
 import Navgate from "../../components/navgate";
@@ -22,19 +21,19 @@ class Main extends Component {
     init(){
         if (this.props.match.params.id) {
             let id = this.props.match.params.id;
-            this.setState({
-                list: JSON.parse(localStorage.getItem("list"))
+            // this.setState({
+            //     list: JSON.parse(localStorage.getItem("list"))
+            // })
+            server.getPlayListDetail({ id })
+            .then(res => {
+                this.setState({
+                    list: createPlayListDetail(res.playlist)
+                })
+                // localStorage.setItem("list", JSON.stringify(createPlayListDetail(res.playlist)))
             })
-            // server.getPlayListDetail({ id })
-            // .then(res => {
-            //     this.setState({
-            //         list: createPlayListDetail(res.playlist)
-            //     })
-            //     localStorage.setItem("list", JSON.stringify(createPlayListDetail(res.playlist)))
-            // })
-            // .catch(error => {
-            //     console.log(error);
-            // })
+            .catch(error => {
+                console.log(error);
+            })
         }else{
             this.props.history.push("/")
         }

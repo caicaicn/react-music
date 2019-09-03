@@ -8,6 +8,7 @@ const PlayList = React.lazy(() => import('../page/playList/index'));
 
 export default () => (
     <BrowserRouter>
+    
         <Suspense fallback={null}>
             <Switch>
                 <Route exact path="/" component={Home} />

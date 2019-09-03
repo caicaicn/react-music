@@ -10,9 +10,11 @@ body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, l
     -webkit-tap-highlight-color: transparent;
 }
 
-html {
+html, body, #app {
     height: 100%;
-    width: 100%;
+    /* width: 100%; */
+    max-width: 750px!important;
+    margin: 0 auto;
 }
 
 body {
