@@ -10,6 +10,14 @@ const api = {
     // 获取歌单详情
     getPlayListDetail: function (params) {
         return setRequest.get(baseUrl + "/playlist/detail", params)
+    },
+    // 获取排行榜（完整版）
+    getTopList: function (params) {
+        return setRequest.get(baseUrl + "/toplist/detail", params)
+    },
+    // 推荐歌单
+    getRecomm: function (params) {
+        return setRequest.get(baseUrl + "/personalized", params)
     }
 }
 export default api;
@@ -50,7 +58,7 @@ export default api;
 //     })
 // }
 
-// //获取排行榜（完整版）
+// 获取排行榜（完整版）
 // export function getTopListDetail() {
 //     const url = `${URL}/toplist/detail`
 //     return axios.get(url)

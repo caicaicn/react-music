@@ -1,0 +1,11 @@
+.rank-list {
+  padding-top: 1.2rem;
+  background-color: #f3f4f6;
+}
+.rank-list .list {
+  padding-left: .1rem;
+}
+.rank-list .list h3 {
+  font-size: .4rem;
+  padding: .3rem 0;
+}

@@ -1,0 +1,39 @@
+.author-list .item {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: .3rem;
+}
+.author-list .item .left {
+  float: left;
+  width: 3rem;
+  overflow: hidden;
+  position: relative;
+}
+.author-list .item .left img {
+  width: 3rem;
+  height: 3rem;
+}
+.author-list .item .left .c-tips {
+  position: absolute;
+  left: 0.1rem;
+  bottom: 0.1rem;
+  color: #fff;
+  font-size: .3rem;
+}
+.author-list .item .contain {
+  margin-left: 3rem;
+  padding: .2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  height: 3rem;
+}
+.author-list .item .contain p {
+  font-size: .34rem;
+  color: #666;
+  word-break: keep-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.author-list .item .contain .p-c {
+  padding: .5rem 0;
+}
