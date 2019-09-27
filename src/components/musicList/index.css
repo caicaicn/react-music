@@ -33,3 +33,11 @@
 .music-item-active, .music-item-active .music-des h4, .music-item-active .music-des p{
     color: #e5473c!important;
 }
+
+.no-more{
+    width: 100%;
+    text-align: center;
+    font-size: .2rem;
+    color: #888;
+    padding: .3rem 0;
+}

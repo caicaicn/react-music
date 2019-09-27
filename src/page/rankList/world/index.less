@@ -1,0 +1,29 @@
+.world-list{
+    padding-right: .1rem;
+    overflow: hidden;
+    .item{
+        float: left;
+        width: 33%;
+        margin: .2rem .16%;
+        .top{
+            position: relative;
+            .i-t{
+                position: absolute;
+                bottom: 0.1rem;
+                left: 0.1rem;
+                color: #fff;
+            }
+            img{
+                width: 100%;
+                height: 3.2rem;
+            }
+        }
+        p{
+            padding: .2rem;
+            width: 100%;
+            overflow: hidden;/*超出部分隐藏*/
+            white-space: nowrap;/*不换行*/
+            text-overflow:ellipsis;/*超出部分文字以...显示*/
+        }
+    }
+}

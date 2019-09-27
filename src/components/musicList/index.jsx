@@ -8,10 +8,25 @@ class Main extends Component{
     selectMusic(list, index){
         this.props.itemOnclick(list, index)
     }
+    componentDidMount(){
+        let root = document.getElementById("root"),
+            distance = window.innerHeight + 1;
+        root.addEventListener("scroll", () => {
+            if (this.refs.musicList){
+                let bottom = this.refs.musicList.getBoundingClientRect().bottom;
+                
+                if (bottom < distance){
+                    // 加载更多
+                    this.props.loadMore()
+                }
+            }
+        })
+    }
+
     render(){
         const { tracks, itemOnclick, currentIndex } = this.props
         return(
-            <div className="music-list">
+            <div ref='musicList' className="music-list">
                 {
                     tracks && tracks.length > 0 && tracks.map((item, index) => {
                         return (
@@ -28,7 +43,7 @@ class Main extends Component{
                         )
                     })
                 }
-
+                <p className="no-more">没有更多</p>
             </div>
         )
     }

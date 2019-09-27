@@ -6,6 +6,7 @@ import { createPlayListDetail } from '../../utils/playlist';
 import Navgate from "../../components/navgate";
 import MusicList from "../../components/musicList"
 import { setPlayMusic } from "../../store/action";
+
 class Main extends Component {
     constructor(){
         super();
@@ -47,6 +48,10 @@ class Main extends Component {
         this.props.setPlayMusic(list, index);
     }
 
+    loadMore(){
+        console.log('没有更多');
+    }
+
     render(){
         let headerStyle = { 
             'backgroundImage': `url(${this.state.list.coverImgUrl})`,
@@ -76,7 +81,7 @@ class Main extends Component {
                         </div>
                     </div>
                 </header>
-                <MusicList currentIndex={this.props.currentIndex} tracks={tracks} itemOnclick={this.selectMusic.bind(this)}></MusicList>
+                <MusicList currentIndex={this.props.currentIndex} tracks={tracks} itemOnclick={this.selectMusic.bind(this)} loadMore={this.loadMore.bind(this)}></MusicList>
             </div>
         )
     }

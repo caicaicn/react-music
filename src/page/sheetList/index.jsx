@@ -12,19 +12,31 @@ class Main extends Component {
         }
     }
     componentDidMount(){
+        console.log(this.props);
+        
         // page * limit
-        let params = { order: true, limit: 20, offset: 0 }
-        server.getPlayList()
-        .then(res => {
+        if (!localStorage.getItem("sheetList")){
+            let params = { order: true, limit: 20, offset: 0 }
+            server.getPlayList()
+            .then(res => {
+                localStorage.setItem("sheetList", JSON.stringify(res.playlists));
+                this.setState((state) => {
+                    return {
+                        list: res.playlists
+                    }
+                })
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        }else{
             this.setState((state) => {
                 return {
-                    list: res.playlists
+                    list: JSON.parse(localStorage.getItem("sheetList"))
                 }
             })
-        })
-        .catch( error => {
-            console.log(error);
-        })
+        }
+        
     }
     // 跳转到playlist
     goPlaylist(id){

@@ -9,7 +9,7 @@ var initState = {
     currentIndex: -1,
     playList: [],
     currentMusic: {},
-    showPlayer: false 
+    showPlayer: false
 };
 
 export default (state = initState, action) => {
