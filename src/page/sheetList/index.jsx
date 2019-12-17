@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from 'react-router-dom';
 import server from "../../server/index";
 import "./index.css";
 import Navgate from "../../components/navgate"
@@ -12,8 +13,6 @@ class Main extends Component {
         }
     }
     componentDidMount(){
-        console.log(this.props);
-        
         // page * limit
         if (!localStorage.getItem("sheetList")){
             let params = { order: true, limit: 20, offset: 0 }
@@ -36,7 +35,6 @@ class Main extends Component {
                 }
             })
         }
-        
     }
     // 跳转到playlist
     goPlaylist(id){
@@ -44,10 +42,14 @@ class Main extends Component {
     }
 
     render() {
-        let list = this.state.list;
+        const { list } = this.state;
+        const { location } = this.props;
+        
         return (
             <div className="sheet">
-                <Navgate title="歌单"></Navgate>
+                {
+                    location && location.pathname == "/sheetlist" && <Navgate title="歌单"></Navgate>
+                }
                 <div className="sheet-list">
                     {
                         list.map((item, index) => {
@@ -66,4 +68,4 @@ class Main extends Component {
     }
 }
 
-export default Main;
+export default withRouter(Main);

@@ -1,7 +1,6 @@
 /**/
 import setRequest from './request';
-let baseUrl = "http://192.168.43.21:3000";
-// let baseUrl = "http://localhost:3000";
+let baseUrl = "http://192.168.43.14:3000";
 const api = {
     // 获取歌单列表
     getPlayList: function (params) {
