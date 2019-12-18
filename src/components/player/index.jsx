@@ -6,8 +6,7 @@ import { setIsPlay, setNext } from "../../store/action";
 import MiniPlayer from "./miniPlay";
 import FullPlay from "./fullPlay";
 import server from "../../server/index";
-import { clearInterval } from "timers";
-import { formatTime } from "../../utils/base";
+import { formatTime, initPlayerTime } from "../../utils/player";
 let timer = null;
 
 
@@ -26,15 +25,9 @@ class Main extends Component {
         this.state = {
             audioEl:"",
             isFull: false,
-            time: {
-                currentTime: "00:00",
-                bufferPercent: 0,
-                totalTime: "00:00",
-                currentTimePercent: 0
-            }
+            time: initPlayerTime()
         }
     }
-
     // 播放更新节流  避免多次渲染
     updateThrottle(time){
         return (() => {
@@ -58,31 +51,41 @@ class Main extends Component {
                 currentTimePercent: this.audioEl.currentTime / this.props.currentMusic.duration * 100
             }
         } catch (error) {
-            time = {
-                currentTime: "00:00",
-                bufferPercent: 0,
-                totalTime: "00:00",
-                currentTimePercent: 0
-            };
+            time = initPlayerTime()
         }
         this.updateThrottle(time);
     }
 
     // 播放结束 自动播放下一首
     ended(){
-        console.log('播放结束');
         this.props.dispatch(setNext())
     }
 
     componentDidMount(){
+        this.toggle();
         // this.audioEl = ReactDOM.findDOMNode(this.refs.audioEl)
         this.audioEl = this.refs.audioEl;
         this.audioEl.addEventListener("timeupdate", this.timeupdate.bind(this), false)
         this.audioEl.addEventListener('ended', this.ended.bind(this), false);
     }
 
-    componentWillReceiveProps(){
+    // react 17版本之后取消
+    // componentWillReceiveProps(){
+    //     this.toggle()
+    // }
+    shouldComponentUpdate(nextProps, nextState){
         this.toggle()
+        // let isInitFlag = nextProps.currentMusic && nextProps.currentMusic.id && this.props.currentMusic && this.props.currentMusic.id && (nextProps.currentMusic.id != this.props.currentMusic.id)
+        // if (!!isInitFlag) {
+        //     this.setState({
+        //         time: initPlayerTime()
+        //     })
+        //     timer = null;
+            // if (timer) clearTimeout(timer)
+        // } 
+
+        // return !!nextProps.isPlay;
+        return true;
     }
 
     componentWillUnmount(){
@@ -114,11 +117,13 @@ class Main extends Component {
     }
 
     render() {
-
-        let currentMusic = this.props.currentMusic;
+        console.log('reRender...');
+        
+        const { currentMusic, isPlay, showPlayer } = this.props;
+        const { time, isFull } = this.state;
 
         const miniPlayer = <MiniPlayer 
-        isPlay={this.props.isPlay} 
+        isPlay={isPlay} 
         musicImg={currentMusic} 
         play={this.play.bind(this)} 
         setIsFull={this.setIsFull.bind(this)}
@@ -127,7 +132,7 @@ class Main extends Component {
         
         const fullPlay = <FullPlay 
         title={currentMusic} 
-        time={this.state.time}
+        time={time}
         setIsFull={this.setIsFull.bind(this)}
         >
         </FullPlay>
@@ -135,7 +140,7 @@ class Main extends Component {
         return (
             <div className="player">
                 {
-                    this.props.showPlayer ? this.state.isFull ? fullPlay: miniPlayer : null
+                    showPlayer ? isFull ? fullPlay: miniPlayer : null
                 }
                 
                 <audio ref="audioEl" src={`https://music.163.com/song/media/outer/url?id=${

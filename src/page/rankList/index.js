@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
 }
 
 
-const rankListPage = (props) => {
+const RankListPage = (props) => {
 
     const [ topList, setTopList ] = useState([]),
         { isPlay, currentIndex } = props;
@@ -72,4 +72,4 @@ const rankListPage = (props) => {
     )
 }
 
-export default connect()(rankListPage)
+export default connect()(RankListPage)

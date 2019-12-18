@@ -20,7 +20,8 @@ class Main extends Component {
     }
 
     render(){
-
+        console.log('fullPlay-render');
+        
         const { 
             title,
             time,

@@ -15,3 +15,12 @@ export const formatTime = time => {//默认获取的时间是时间戳改成我�
     var allTime = "" + minutes + "" + ":" + "" + seconds + ""
     return allTime;
 }
+
+export const initPlayerTime = () => {
+    return {
+        currentTime: "00:00",
+        bufferPercent: 0,
+        totalTime: "00:00",
+        currentTimePercent: 0
+    }
+}
