@@ -3,15 +3,21 @@ import { connect } from "react-redux";
 import "./index.css";
 import { setNext, setIsPlay, setPlayMusic } from "../../../store/action";
 import MusicList from "../../musicList/index";
-
+import propTypes from 'prop-types';
 
 class Main extends Component {
-
     constructor(){
         super();
         this.state = {
             showCurrentList: false
         }
+    }
+
+    static propTypes = {
+        title: propTypes.object.isRequired,
+        time: propTypes.object.isRequired,
+        setIsFull: propTypes.func.isRequired,
+        currentIndex: propTypes.number.isRequired
     }
 
     setShowCurrentList(boolean, e ){
