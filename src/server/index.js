@@ -17,6 +17,10 @@ const api = {
     // 推荐歌单
     getRecomm: function (params) {
         return setRequest.get(baseUrl + "/personalized", params)
+    },
+    // 获取首页banner
+    getBanner: function (params) {
+        return setRequest.get(baseUrl + "/banner?type=2", params)
     }
 }
 export default api;
