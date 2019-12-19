@@ -3,10 +3,9 @@ import { connect } from "react-redux";
 import "./index.css";
 import { setNext, setIsPlay, setPlayMusic } from "../../../store/action";
 import MusicList from "../../musicList/index";
-
+import propTypes from 'prop-types';
 
 class Main extends Component {
-
     constructor(){
         super();
         this.state = {
@@ -14,29 +13,21 @@ class Main extends Component {
         }
     }
 
+    static propTypes = {
+        title: propTypes.object.isRequired,
+        time: propTypes.object.isRequired,
+        setIsFull: propTypes.func.isRequired,
+        currentIndex: propTypes.number.isRequired
+    }
+
     setShowCurrentList(boolean, e ){
         e.stopPropagation();
         this.setState({ showCurrentList: boolean })
     }
-    download(){
-        fetch("http://192.168.43.21:3000/file-load",{ 
-            url: "https://music.163.com/song/media/outer/url?id=1371382052.mp3",
-            method: "get"
-        }
-        )
-        .then(res => {
-            console.log(res);
-            
-        })
-        .catch(error => {
-            console.log(error);
-            
-        })
-        // window.open('https://music.163.com/song/media/outer/url?id=1371382052.mp3')
-    }
 
     render(){
-
+        console.log('fullPlay-render');
+        
         const { 
             title,
             time,
@@ -91,8 +82,6 @@ class Main extends Component {
                             <MusicList tracks={playList} currentIndex={currentIndex} itemOnclick={(playList, index) => setPlayMusic(playList, index)}></MusicList>
                         </div>)
                     }
-                    <button onClick={this.download.bind(this)}>下载</button>
-                    <a href="http://p2.music.126.net/4HcuOPznQ_U1cg78nkVGtg==/109951164282579815.jpg" download>Download file</a>
                 </section>
             </div>
         )

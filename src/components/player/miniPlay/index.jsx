@@ -1,8 +1,15 @@
 import React, { Component } from "react";
 import "./index.css";
 
+
 class Main extends Component {
+    shouldComponentUpdate(nextProps){
+        const { musicImg, isPlay } = this.props;
+        return musicImg.name != nextProps.musicImg.name || musicImg.singer != nextProps.musicImg.singer || isPlay != nextProps.isPlay
+    }
+
     render(){
+        console.log('miniPlay-render');
         const { setIsFull, musicImg, play, isPlay } = this.props;
         return (
             <div className="mini-player">

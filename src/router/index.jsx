@@ -7,16 +7,43 @@ const SheetList = React.lazy(() => import('../page/sheetList/index'));
 const PlayList = React.lazy(() => import('../page/playList/index'));
 const RankList = React.lazy(() => import('../page/rankList/index'));
 
+const router = [
+    {
+        path: "/",
+        component: Home,
+        headerShow: false
+    },
+    {
+        path: "/home",
+        component: Home,
+        headerShow: false
+    },
+    {
+        path: "/sheetlist",
+        component: SheetList,
+        headerShow: true
+    },
+    {
+        path: "/playlist/:id",
+        component: PlayList,
+        headerShow: true
+    },
+    {
+        path: "/rankList",
+        component: RankList,
+        headerShow: true
+    }
+]
+
+
+
 export default () => (
     <BrowserRouter>
-    
         <Suspense fallback={null}>
             <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/home" component={Home} />
-                <Route path="/sheetlist" component={SheetList} />
-                <Route path="/playlist/:id" component={PlayList} />
-                <Route path="/rankList" component={RankList} />
+                {
+                    router.map(({ ...rest }, index) => <Route exact path={rest.path} component={rest.component} key={index} />)
+                }
                 <Redirect to="/" />
             </Switch>
         </Suspense>

@@ -5,6 +5,10 @@ class Main extends Component{
     constructor(){
         super();
     }
+    shouldComponentUpdate(nextProps){
+        const { tracks, currentIndex } = this.props;
+        return !tracks || tracks.length != nextProps.tracks.length || currentIndex != nextProps.currentIndex
+    }
     selectMusic(list, index){
         this.props.itemOnclick(list, index)
     }
@@ -24,6 +28,7 @@ class Main extends Component{
     }
 
     render(){
+        
         const { tracks, itemOnclick, currentIndex } = this.props
         return(
             <div ref='musicList' className="music-list">
